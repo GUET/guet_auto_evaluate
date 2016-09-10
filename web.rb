@@ -6,7 +6,7 @@ module Sinatra
   class Base
     set :server, %w[thin mongrel webrick]
     set :bind, '0.0.0.0'
-    set :port, 4567
+    set :port, 8000
     set :views, File.dirname(__FILE__) + '/views'
   end
 end
