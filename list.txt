@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>教材评价</title>
+
+
+<script src="/public/lwJsFuncs.js" language="javascript">
+<!-- Hide script from old browsers.
+document.writeln("Can not find the javascript functions written by Sherwin lee!");
+alert("请用IE4.0以上来浏览!");
+window.close();
+top.location.href="";
+// End the hiding here. -->
+</script>
+<link REL="StyleSheet" HREF="/public/lwstyle.css" TYPE="text/css">
+<link REL="StyleSheet" HREF="/public/lwPrnStyle.css" TYPE="text/css" MEDIA="print">
+
+
+</head>
+
+<body>
+<div class="banner" align="center">
+
+<script language="javascript">
+<!-- Hide script from old browsers.
+document.write(document.title)
+// End the hiding here. -->
+</script></div>
+<center><font size=5></font></center>
+<form action="/student/textpj.asp" method="POST">
+<center style="color:red;">已提交！</center>
+<table border="1" CELLSPACING=0 width="100%" align="center">
+  <tr><td width="20%" align="center">指标</td><td width="60%" align="center">内容</td><td width="5%" align="center">权重</td><td width="15%" align="center">评价结果</td></tr>
+<tr><td rowspan='1'>教材适用</td><td>是否便于学生自学，有利于学生能力的培养，教材的深度、份量是否适当，例题和练习题是否合适等。</td><td>.4<td><input type='radio' name='score279' value='95' checked >优<input type='radio' name='score279' value='85'  >良<input type='radio' name='score279' value='75'  >中<input type='radio' name='score279' value='65'  >差</td><input type='hidden' name='id' value='279'><input type='hidden' name='qz' value='.4'></td></tr><tr><td rowspan='1'>教材编排</td><td>教材中的语言、文字是否规范，图文配合是否得当，版式、装订、印刷质量如何等。</td><td>.1<td><input type='radio' name='score280' value='95' checked >优<input type='radio' name='score280' value='85'  >良<input type='radio' name='score280' value='75'  >中<input type='radio' name='score280' value='65'  >差</td><input type='hidden' name='id' value='280'><input type='hidden' name='qz' value='.1'></td></tr><tr><td rowspan='1'>教材内容</td></td><td>是否符合本门课程教学及专业培养目标的要求，是否具有科学性、系统性、时代性。</td><td>.5<td><input type='radio' name='score281' value='95' checked >优<input type='radio' name='score281' value='85'  >良<input type='radio' name='score281' value='75'  >中<input type='radio' name='score281' value='65'  >差</td><input type='hidden' name='id' value='281'><input type='hidden' name='qz' value='.5'></td></tr>
+ <tr><td colspan="6">评语：<textarea cols=60 rows=2 name="py"></textarea><td></tr>
+</table>
+<input type="hidden" name="pjlb" value="">
+<input type="hidden" name="gx" value="t">
+<input type="hidden" name="tno" value="2491">
+<input type="hidden" name="cno" value="">
+<input type="hidden" name="term" value="2015-2016_1">
+<input type="hidden" name="cid" value="">
+<input type="hidden" name="c" value="BT0200097X0">
+<center><br><div class='button'><input type='submit' name='lwBtnbc' value='保存'><input type='submit' name='lwBtntijiao' value='提交' onclick="return confirm('提交后评教结果将不能修改，请确认!')"></div><br><input type="button" value="关闭窗口" onclick="javascript:self.close()"></center>
+</form>
+
+</body>
+</html>

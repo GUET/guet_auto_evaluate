@@ -7,7 +7,7 @@ BASE_URL = 'bkjw.guet.edu.cn'
 LOGIN_URL = '/student/public/login.asp'
 LOGOUT_URL = '/student/public/logout.asp'
 
-LOGIN_DATA = 'username=1300250112&passwd=186225&login=%B5%C7%A1%A1%C2%BC'
+LOGIN_DATA = 'username=1300250106&passwd=181xiaobawang&login=%B5%C7%A1%A1%C2%BC'
 
 VOTE_URL_LIST = {'/student/stjxpg.asp' => '/student/teachinpj.asp','/student/textevaluation.asp' => '/student/textpj.asp'}
 
@@ -77,6 +77,7 @@ VOTE_URL_LIST.each do |vote_list_url,vote_post_url|
     end
   end
 end
+
 resp, data = http.get(LOGOUT_URL,headers)
 print resp.code+" logout success"
 

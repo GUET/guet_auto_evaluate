@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="jquery.js"></script>
+    <style media="screen">
+    * {
+      padding: 0px;
+      margin: 0px;
+      border: 0px;
+    }
+    .cover {
+      position: relative;
+      display: table;
+      width: 100%;
+      height: 100vh;
+      text-align: center;
+      background: #222 no-repeat center center;
+      background-size: cover;
+      overflow: hidden;
+      background-image: url('cover.jpg');
+      /*模糊度*/
+      -webkit-filter: blur(3px);
+      -moz-filter: blur(3px);
+      -ms-filter: blur(3px);
+      filter: blur(3px);
+      /*透明度*/
+      filter:alpha(opacity=60);
+      -moz-opacity:0.6;
+      opacity:0.6;
+    }
+    .w1 {
+      width:0;
+      height:0;
+      position:fixed;
+      left:50%;
+      right:50%;
+      top:50%;
+      bottom:50%;
+    }
+    .window {
+      margin: 0px auto;
+      width: 800px;
+      height: 500px;
+      border-radius: 7px;
+      background-color: #4c2e4c;
+      margin-left:-400px;
+      margin-top:-250px;
+      padding-top: 20px;
+
+      -webkit-filter: blur(0px);
+      -moz-filter: blur(0px);
+      -ms-filter: blur(0px);
+      filter: blur(0px);
+
+      filter:alpha(opacity=90);
+      -moz-opacity:0.9;
+      opacity:0.8;
+    }
+    .title {
+      margin: 0px auto;
+      width: 720px;
+      height: 100px;
+      border: 2px solid #bbbbda;
+      text-align: center;
+    }
+    .content {
+      margin: 0px auto;
+      margin-top: 10px;
+      width: 720px;
+      height: 350px;
+      border: 2px solid #bbbbda;
+    }
+    .title h1{
+      margin-top: 35px;
+    }
+    .content .left {
+      width: 324px;
+      height: 340px;
+      border-radius: 3px;
+      float: left;
+      margin-right: 10px;
+      margin-left: 10px;
+      margin-top: 5px;
+      transition: all 0.5s;
+    }
+    .change {
+      background-color: #986398;
+      transform: rotateY(180deg);
+    }
+    .is_hide{
+      display: none;
+    }
+    .hide {
+      transform: rotateY(180deg);
+    }
+    .content .right {
+      width: 374px;
+      height: 350px;
+      border: 1px solid #bbbbda;
+      float: right;
+    }
+    .content .left .raw {
+      width: 200px;
+      margin: 0px auto;
+      margin-bottom: 10px;
+    }
+    .content .left .raw p {
+      width: 200px;
+      text-align: left;
+      margin: 5px 8px;
+      display: block;
+      font-size: 20px;
+      color: #bbbbda;
+    }
+    .content .left .raw input {
+      width: 180px;
+      margin: 8px;
+      height: 25px;
+      line-height: 25px;
+      background-color: #716271;
+      border-radius: 3px;
+      padding: 2px;
+      font-size: 21px;
+
+    }
+    .content .left .info {
+      position: relative;
+      top:40px;
+      margin: 0px auto;
+    }
+    .content .left .info p {
+      color: #e05757;
+    }
+    .content .left .raw button {
+      display: block;
+      width: 180px;
+      margin: 0px auto;
+      height: 25px;
+      line-height: 25px;
+      text-align: center;
+      font-weight: 800;
+      cursor: pointer;
+      border-radius: 3px;
+      position: relative;
+      top: 20px;
+      font-size: 16px;
+    }
+    .content .left .raw button:hover{
+      color: #f1f1fb;
+      background-color: #716271;
+    }
+    .loading{
+      background-image: url(loading.gif);
+      background-repeat: no-repeat;
+      background-size: 25px,25px;
+      background-position: center;
+      background-color: #716271;
+    }
+    </style>
+  </head>
+  <body>
+    <header class="cover">
+    </header>
+    <div class="w1">
+      <div class="window">
+        <div class="title">
+          <h1>Auto Teaching Evaluation System of GUET</h1>
+        </div>
+        <div class="content">
+          <div class="left <%= 'change' if session['user'] %>">
+            <div class="show <%= 'is_hide' if session['user'] %>">
+              <div class="raw">
+                <p>
+                  学号:
+                </p>
+                <input type="text" name="user" value="">
+              </div>
+              <div class="raw">
+                <p>
+                  密码:
+                </p>
+                <input type="password" name="passwd" value="">
+              </div>
+              <div class="raw">
+                <button class="open" type="submit" name="button">Login</button>
+              </div>
+              <div class="raw info is_hide">
+                <p>
+                  学号或密码错误!
+                </p>
+              </div>
+            </div>
+            <div class="hide <%= 'is_hide' unless session['user'] %>">
+              <div class="raw">
+                <p>
+                  个人信息:
+                </p>
+                <p>
+                  学号: <span>?</span>
+                </p>
+                <p>
+                  班级: <span>?</span>
+                </p>
+              </div>
+              <hr style="border-bottom:1px solid purple">
+              <div class="raw">
+                <p>
+                  评教信息:
+                </p>
+                <p>
+                  共有 <span>?</span> 个需要评教
+                </p>
+                <p>
+                  已完成 <span>?</span> 个评教
+                </p>
+                <p>
+                  评教进度: <span>?</span>
+                </p>
+              </div>
+              <div class="raw">
+                <button class="start" type="submit" name="button">Start</button>
+              </div>
+              <div class="raw">
+                <button class="close" type="submit" name="button">Logout</button>
+              </div>
+            </div>
+          </div>
+          <div class="right">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      $('.open').click(function(){
+        if($('input')[0].value == '' || $('input')[1].value == '')
+        $('.info').removeClass('is_hide')
+        else{
+          post_data = '{"user":"'+$('input')[0].value+'","passwd":"'+$('input')[1].value+'"}'
+          console.log(post_data)
+          $.ajax({
+              type: 'POST',
+              url: '/login',
+              data: post_data,
+              success: function(data) {
+                console.log(data)
+                if(data == '1') {
+                  $('.left').addClass('change')
+                  $('.show').addClass('is_hide')
+                  $('.hide').removeClass('is_hide')
+                }
+                else {
+                  $('.info').removeClass('is_hide')
+                }
+              },
+              contentType: "application/json",
+              dataType: 'json'
+          });
+        }
+      })
+      $('.close').click(function(){
+        $.get('logout',function(){
+          $('.show').removeClass('is_hide')
+          $('.hide').addClass('is_hide')
+          $('.left').removeClass('change')
+        })
+      })
+      $('.start').click(function(){
+        $(this).html('')
+        $(this).addClass('loading')
+      })
+    </script>
+</body>
+</html>

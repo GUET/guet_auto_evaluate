@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript" src="jquery.js"></script>
+<style>
+
+div#myDiv {
+    /*transition: transform 1s ease 0s;*/
+    margin: 0px auto;
+    margin-top: 200px;
+    width: 300px;
+    height: 300px;
+    background-color: yellow;
+    border: 1px solid black;
+    transition: all 0.3s;
+}
+.change {
+  background-color: red;
+  transform: rotateY(180deg);
+}
+.hide{
+  display: none;
+}
+.c2 {
+  transform: rotateY(180deg);
+}
+.loading {
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  line-height: 300px;
+}
+.loading img {
+  width: 200px;
+  height: 200px;
+  vertical-align: middle;
+}
+</style>
+</head>
+<body>
+
+<div id="myDiv">
+<div class="c1">
+  show
+</div>
+<div class="c2 hide">
+  hide
+</div>
+<div class="loading hide">
+  <img src="loading.gif" alt="" />
+</div>
+</div>
+<input class="open" type="button" name="name" value="111">
+<input class="close" type="button" name="name" value="222">
+
+<script type="text/javascript">
+  $('.open').click(function(){
+    $('.loading').removeClass('hide')
+    // $('#myDiv').addClass('change')
+    // $('.c1').addClass('hide')
+    // $('.c2').removeClass('hide')
+
+  })
+  $('.close').click(function(){
+    $('.c1').removeClass('hide')
+    $('.c2').addClass('hide')
+    $('#myDiv').removeClass('change')
+  })
+</script>
+</body>
+</html>
