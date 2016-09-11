@@ -11,7 +11,7 @@ class Guet
 
   LOGIN_DATA = 'username={user}&passwd={passwd}&login=%B5%C7%A1%A1%C2%BC'
 
-  attr_accessor :http, :headers
+  attr_accessor :http, :headers, :user
 
   def initialize
     @http = Net::HTTP.new(BASE_URL, 80)
@@ -30,7 +30,7 @@ class Guet
   def login(user , passwd)
     login_data = LOGIN_DATA.gsub(/\{user\}/, user)
     login_data = login_data.gsub(/\{passwd\}/, passwd)
-
+    @user = user
     resp, data = @http.post(LOGIN_URL, login_data, @headers)
 
     if /red/.match resp.body

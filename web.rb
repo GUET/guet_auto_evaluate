@@ -8,6 +8,8 @@ module Sinatra
     set :bind, '0.0.0.0'
     set :port, 8000
     set :views, File.dirname(__FILE__) + '/views'
+    set :environment, :production
+    set :logging, true
   end
 end
 
@@ -29,7 +31,7 @@ end
 post '/login' do
   request.body.rewind
   data = JSON.parse request.body.read
-  require_relative 'User'
+  require_relative 'guet.rb'
   @user = User.new(data['user'], data['passwd'])
 
   if @user.login
@@ -49,4 +51,3 @@ end
 not_found do
   'This is nowhere to be found'
 end
-
