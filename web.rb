@@ -32,9 +32,8 @@ post '/login' do
   request.body.rewind
   data = JSON.parse request.body.read
   require_relative 'guet.rb'
-  @user = User.new(data['user'], data['passwd'])
-
-  if @user.login
+  @user = User.new
+  if @user.login(data['user'], data['passwd'])
   # if true
     session['user'] = @user.user
     "1"
