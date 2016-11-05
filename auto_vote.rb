@@ -2,12 +2,19 @@ require 'net/http'
 require 'nokogiri'
 require 'open-uri'
 
+acount = []
+
+ARGV.each do|a|
+  acount.push a
+end
+
 BASE_URL = 'bkjw.guet.edu.cn'
 
 LOGIN_URL = '/student/public/login.asp'
 LOGOUT_URL = '/student/public/logout.asp'
 
-LOGIN_DATA = 'username=1300250106&passwd=181xiaobawang&login=%B5%C7%A1%A1%C2%BC'
+LOGIN_DATA = "username=#{acount[0]}&passwd=#{acount[1]}&login=%B5%C7%A1%A1%C2%BC"
+
 
 VOTE_URL_LIST = {'/student/stjxpg.asp' => '/student/teachinpj.asp','/student/textevaluation.asp' => '/student/textpj.asp'}
 
@@ -26,6 +33,7 @@ headers = {
 puts "begin get vote list ..."
 
 VOTE_URL_LIST.each do |vote_list_url,vote_post_url|
+  puts 'start -------------------'
   vote_list=[]
 
   resp, data = http.get(vote_list_url,headers)
@@ -80,4 +88,3 @@ end
 
 resp, data = http.get(LOGOUT_URL,headers)
 print resp.code+" logout success"
-
