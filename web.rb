@@ -11,6 +11,15 @@ module Sinatra
     set :views, File.dirname(__FILE__) + '/views'
     set :environment, :production
     set :logging, true
+
+    configure do
+      enable :logging
+      # file = File.new("#{settings.root}/log/#{settings.environment}.log", 'a+')
+      file = File.new("./log/web.log", 'a+')
+      file.sync = true
+      use Rack::CommonLogger, file
+    end
+
   end
 end
 
